@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day01</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <h2>{{message}}</h2>
+    <h2 v-once>{{message}}</h2>
+    <span v-html="rawHtml"></span>
+    <span>{{rawHtml}}</span>
+    <h2>This is a good</h2>
+    <h2 v-text="message">This is a good</h2>
+    <h2>{{message}}</h2>
+    <h2 v-pre>{{message}}</h2>
+  </div>
+  <script>
+    setTimeout(() => {
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "hello Vue",
+          rawHtml: '<span style="color:red">This is</span>'
+        }
+      })
+    }, 3000)
+  </script>
+
+
+</body>
+
+</html>

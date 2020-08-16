@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day01</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <!-- 正确的做法使用v-bind指令 -->
+    <img v-bind:src="imgURL" alt="">
+    <a v-bind:href="aHerf">百度一下</a>
+    <!-- 语法糖写法 -->
+    <img :src="imgURL" alt="">
+    <a :href="aHerf"></a>
+  </div>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        imgURL: "https://cn.bing.com/th?id=OIP.NaSKiHPRcquisK2EehUI3gHaE8&pid=Api&rs=1",
+        aHerf: "http://www.baidu.com"
+      }
+    })
+  </script>
+
+
+</body>
+
+</html>
