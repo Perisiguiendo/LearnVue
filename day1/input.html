@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #app {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <span v-if="isPhone">
+      <label for="phone">用户电话：</label>
+      <input type="text" id="phone" placeholder="请输入电话号" key="phone">
+    </span>
+    <span v-else>
+      <label for="email">用户邮箱：</label>
+      <input type="text" id="email" placeholder="请输入邮件" key="phone">
+    </span>
+    <button @click="btnClick()">切换类型</button>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      isPhone: false,
+    },
+    methods: {
+      btnClick() {
+        this.isPhone = !this.isPhone;
+      }
+    },
+  })
+</script>
+
+</html>

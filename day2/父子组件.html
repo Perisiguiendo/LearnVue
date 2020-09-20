@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #app {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <cpnfather></cpnfather>
+    <cpnson></cpnson>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const cpnSonCon = Vue.extend({
+      template: `
+    <div>
+      <h5>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h5>
+      <h6>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h6>
+    </div>
+    `
+    })
+
+    const cpnFatherCon = Vue.extend({
+      template: `
+    <div>
+      <h3>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h3>
+      <h4>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h4>
+      <cpnson></cpnson>
+    </div>
+    `,
+      components: {
+        cpnson: cpnSonCon
+      }
+    })
+
+    const app = new Vue({
+      el: "#app",
+      data: {
+        isPhone: false,
+      },
+      methods: {
+
+      },
+      computed: {
+
+      },
+      components: {
+        cpnfather: cpnFatherCon,
+        cpnson: cpnSonCon
+      }
+    })
+  </script>
+</body>
+
+
+</html>

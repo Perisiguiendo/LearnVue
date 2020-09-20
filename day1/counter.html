@@ -16,7 +16,7 @@
 <body>
   <div id="counter">
     <h2>{{num}}</h2>
-    <button v-on:click="add()">+</button>
+    <button v-on:click="add">+</button>
     <button @click="sub()">-</button>
   </div>
 
@@ -28,8 +28,9 @@
         num: 0
       },
       methods: {
-        add: function () {
+        add: function (num) {
           this.num++;
+          // console.log(num,num2,num3);
         },
         sub: function () {
           this.num--;
@@ -37,6 +38,7 @@
       }
     })
   </script>
+
 </body>
 
 </html>

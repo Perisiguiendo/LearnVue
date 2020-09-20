@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #app {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <input type="checkbox" value="A" v-model="letter">A
+    <input type="checkbox" value="B" v-model="letter">B
+    <input type="checkbox" value="C" v-model="letter">C
+    <input type="checkbox" value="D" v-model="letter">D
+    <input type="checkbox" value="E" v-model="letter">E
+    <h2>{{letter}}</h2> -->
+
+    <!-- <select name="" id="fruit" v-model="fruit">
+      <option value="apple">apple</option>
+      <option value="banana">banana</option>
+      <option value="orange">orange</option>
+      <option value="grape">grape</option>
+      <option value="peach">peach</option>
+    </select>
+    <h2>fruit:{{fruit}}</h2>
+
+    <select name="" id="fruits" v-model="fruits" multiple>
+      <option value="apple">apple</option>
+      <option value="banana">banana</option>
+      <option value="orange">orange</option>
+      <option value="grape">grape</option>
+      <option value="peach">peach</option>
+    </select>
+    <h2>fruits:{{fruits}}</h2> -->
+
+
+    <label :for="item" v-for="item in sports">
+      <input type="checkbox" :value="item" :id="item" v-model="selectedSports">{{item}}
+    </label>
+    <h4>selectedSports:{{selectedSports}}</h4>
+
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      isAgree: false,
+      letter: [],
+      fruit: '',
+      selectedSports: [],
+      sports: ['篮球', '台球', '足球', '羽毛球', '高尔夫球', '排球', '跳高', '跳远', '自行车', '滑冰', '滑雪'],
+    },
+    methods: {
+      btnClick() {
+        this.isPhone = !this.isPhone;
+      }
+    },
+  })
+</script>
+
+</html>

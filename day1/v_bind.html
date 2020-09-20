@@ -6,23 +6,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day01</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <style>
+    .active {
+      color: red;
+    }
+
+    #app {
+      margin-left: 200px;
+    }
+
+    .active1 {
+      border: 1px solid darkcyan;
+      width: 200px;
+      padding-left: 10px;
+    }
+
+    .active2 {
+      background: #97f59f;
+    }
+
+    .active3 {
+      border-radius: 10px;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="app" v-cloak>
-    <!-- 正确的做法使用v-bind指令 -->
-    <img v-bind:src="imgURL" alt="">
-    <a v-bind:href="aHerf">百度一下</a>
-    <!-- 语法糖写法 -->
-    <img :src="imgURL" alt="">
-    <a :href="aHerf"></a>
+  <div id="app">
+    <h2 :class="{active: isActive}">{{message}}</h2>
+    <button @click="change">-+-</button>
+    <h2 class="title" :class="[classOne, classTwo, classThree]">{{message}}</h2>
+    <h2 class="title" :class="getClass()">{{message}}</h2>
+    <h2 :style="{fontSize:'50px'}">{{message}}</h2>
+    <h2 :style="{fontSize:fontSize}">{{message}}</h2>
+    <h2 :style="getStyle()">{{message}}</h2>
   </div>
   <script>
     const app = new Vue({
       el: "#app",
       data: {
-        imgURL: "https://cn.bing.com/th?id=OIP.NaSKiHPRcquisK2EehUI3gHaE8&pid=Api&rs=1",
-        aHerf: "http://www.baidu.com"
+        message: 'Hello',
+        active: 'active',
+        isActive: true,
+        classOne: 'active1',
+        classTwo: 'active2',
+        classThree: 'active3',
+        fontSize: '20px'
+      },
+      methods: {
+        change: function () {
+          this.isActive = !this.isActive;
+        },
+        getClass: function () {
+          return [this.classOne, this.classTwo, this.classThree];
+        },
+        getStyle: function () {
+          return '{fontSize:fontSize}';
+        }
       }
     })
   </script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>example</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+    }
+    #movie {
+      margin-top: 40px;
+      margin-left: 200px;
+      width: 200px;
+      height: 300px;
+      box-shadow: 2px 2px 8px #8a8787;
+      background: #f3f3f3;
+    }
+    #movie li {
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .active {
+      background: #4d4d4d;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <ul id="movie">
+    <li v-for="(item,index) in movies" @click="getIndex(index)" :class="{active:index === currentIndex}">{{item}}</li>
+  </ul>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const movie = new Vue({
+      el: "#movie",
+      data: {
+        movies: ['盗梦空间', '大兵瑞恩', '窈窕淑女', '星际穿越', '海上钢琴师', '死亡诗社'],
+        currentIndex: 0
+      },
+      methods: {
+        getIndex: function (index) {
+          this.currentIndex = index;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

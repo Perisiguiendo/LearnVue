@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day01</title>
+  <style>
+    #shopping-cart {
+      margin: 100px;
+    }
+
+    table {
+      width: 600px;
+      border: 1px;
+      border-collapse: collapse;
+      border-spacing: 0;
+      box-shadow: 3px 3px 10px #aaaaaa;
+    }
+
+    th,
+    td {
+      padding: 8px 16px;
+      border: 1px solid #e9e9e9;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f7f7f7;
+      color: #5c6b77;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="shopping-cart">
+    <table>
+      <thead>
+        <tr>
+          <th>书籍名称</th>
+          <th>出版日期</th>
+          <th>价格</th>
+          <th>购买数量</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr v-for="(item,index) in books" :key="index">
+          <td>{{item.name}}</td>
+          <td>{{item.beginDate}}</td>
+          <td>{{item.price | formatPrice}}</td>
+          <td><button @click="decrease(index)" :disabled="item.count<=0">-</button>{{item.count}}<button @click="increase(index)">+</button></td>
+          <td><button @click="remove(index)">移除</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>总价格为:{{sum | formatPrice}}</h3>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#shopping-cart",
+      data: {
+        books: [{
+            name: "《算法导论》",
+            beginDate: "2006-9",
+            price: 85.00,
+            count: 1
+          },
+          {
+            name: "《UNIX编程艺术》",
+            beginDate: "2006-2",
+            price: 59.00,
+            count: 1
+          },
+          {
+            name: "《编程大全》",
+            beginDate: "2008-10",
+            price: 39.00,
+            count: 1
+          },
+          {
+            name: "《代码大全》",
+            beginDate: "2006-3",
+            price: 128.00,
+            count: 1
+          },
+        ],
+        tips: '',
+      },
+      methods: {
+        increase(index) {
+          return this.books[index].count++;
+        },
+        decrease(index) {
+          return this.books[index].count > 0 ? this.books[index].count-- : false;
+        },
+        remove(index) {
+          return this.books.splice(index, 1);
+        },
+      },
+      computed: {
+        sum() {
+          let totalPrice = 0;
+          for (let i = 0; i < this.books.length; i++) {
+            totalPrice += this.books[i].price * this.books[i].count;
+          }
+          return totalPrice;
+        }
+      },
+      filters: { //过滤器
+        formatPrice(price) {
+          return "￥" + price.toFixed(2)
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>
