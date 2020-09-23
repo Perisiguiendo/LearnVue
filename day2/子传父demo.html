@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #app {
+      margin: 100px;
+    }
+    div {
+      color: black;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <div>{{num}}</div>
+    <cpn @item-click="op"></cpn>
+  </div>
+
+  <template id="operation">
+    <div>
+      <button @click="decrement">-</button>
+      <button @click="increment">+</button>
+    </div>
+  </template>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script>
+  const cpn = {
+    template: '#operation',
+    data() {
+      return {
+        add: 'add',
+        sub: 'sub'
+      };
+    },
+    methods: {
+      increment() {
+        this.$emit('item-click', this.add);
+      },
+      decrement() {
+        this.$emit('item-click', this.sub);
+      },
+    }
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data() {
+      return {
+        num: 0,
+      };
+    },
+    methods: {
+      op(e) {
+        switch (e) {
+          case 'add':
+            this.num++;
+            break;
+          case 'sub':
+            this.num--;
+            break;
+          default:
+            break;
+        }
+      }
+    },
+    components: {
+      cpn
+    }
+  })
+</script>
+
+</html>

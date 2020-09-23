@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #app {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <cpnson @cpnclick="cpnclick"></cpnson>
+  </div>
+
+  <template id="cmovies">
+    <div>
+      <button @click="btnclick(item)" v-for="(item,index) in movies" :key="index">{{item.name}}</button>
+    </div>
+  </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script>
+  const cpnson = {
+    template: '#cmovies',
+    data() {
+      return {
+        movies: [{
+          id: 1,
+          name: '盗梦空间'
+        }, {
+          id: 2,
+          name: '大兵瑞恩'
+        }, {
+          id: 3,
+          name: '窈窕淑女'
+        }, {
+          id: 4,
+          name: '星际穿越'
+        }, {
+          id: 5,
+          name: '海上钢琴师'
+        }, {
+          id: 6,
+          name: '死亡诗社'
+        }],
+      };
+    },
+    methods: {
+      btnclick(item) {
+        this.$emit('cpnclick', item);
+      }
+    }
+  }
+
+  const app = new Vue({
+    el: "#app",
+    data() {
+      return {};
+    },
+    methods: {
+      cpnclick(item) {
+        console.log("cpnclick", item.name)
+      }
+    },
+    components: {
+      cpnson,
+    },
+
+  })
+</script>
+
+
+</html>

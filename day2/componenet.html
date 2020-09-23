@@ -15,26 +15,24 @@
 <body>
   <div id="app">
     <cpn></cpn>
-    <cpn></cpn>
-    <cpn></cpn>
   </div>
 
-  
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 <script>
-  const cpnConstructor = Vue.extend({
-    template: `
-    <div>
-      <h3>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h3>
-      <h4>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h4>
-      <h5>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h5>
-      <h6>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h6>
-    </div>
-    `
-  })
+  // const cpnConstructor = Vue.extend()
 
-  // Vue.component('my-cpn', cpnConstructor);
+  // Vue.component('my-cpn', {
+  //   template: `
+  //   <div>
+  //     <h3>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h3>
+  //     <h4>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h4>
+  //     <h5>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h5>
+  //     <h6>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h6>
+  //   </div>
+  //   `
+  // });
 
   const app = new Vue({
     el: "#app",
@@ -42,13 +40,22 @@
       isPhone: false,
     },
     methods: {
-      
+
     },
     computed: {
 
     },
     components: {
-      cpn: cpnConstructor
+      cpn: {
+        template: `
+          <div>
+            <h3>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h3>
+            <h4>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h4>
+            <h5>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h5>
+            <h6>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</h6>
+          </div>
+          `
+      },
     }
   })
 </script>

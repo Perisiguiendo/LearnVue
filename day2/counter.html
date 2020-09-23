@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day01</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <style>
+    #counter {
+      margin-left: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="counter">
+    <count></count>
+    <count></count>
+    <count></count>
+    <count></count>
+    <count></count>
+
+  </div>
+
+  <template id="app">
+    <div>
+      <h2>{{num}}</h2>
+      <button @click="add">+</button>
+      <button @click="sub">-</button>
+    </div>
+  </template>
+
+  <script>
+    Vue.component('count', {
+      template: '#app',
+      data() {
+        return {
+          num: 0,
+        }
+      },
+      methods: {
+        add() {
+          this.num++;
+        },
+        sub() {
+          this.num--;
+        }
+
+      }
+    })
+
+    const app = new Vue({
+      el: "#counter",
+      data: {
+        // num: 0
+      },
+      methods: {
+        // add: function (num) {
+        //   this.num++;
+        //   // console.log(num,num2,num3);
+        // },
+        // sub: function () {
+        //   this.num--;
+        // }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

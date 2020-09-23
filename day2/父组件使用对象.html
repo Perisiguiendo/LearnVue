@@ -33,7 +33,12 @@
   <script>
     const cpnson = {
       template: '#cmovies',
-      props: ['cmovies'],
+      props: {
+        cmovies: {
+          type: Array,
+          required: true,
+        },
+      },
       data() {
         return {};
       }
@@ -45,7 +50,9 @@
       data() {
         return {};
       },
-      props: ['fmovies'], // 数组中的字符串就是传递时的名称
+      props: {
+        fmovies: Array, // 类型限制
+      }, // 数组中的字符串就是传递时的名称
       components: {
         cpnson,
       }
@@ -58,7 +65,6 @@
       },
       components: {
         cpnfather,
-        // cpnson,
       }
     })
   </script>

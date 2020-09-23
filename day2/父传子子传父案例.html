@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #app {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h2>父组件data</h2>
+    <h3>num1: {{num1}}</h3>
+    <h3>num2: {{num2}}</h3>
+    <cpn :cnum1="num1" :cnum2="num2" @fnum1change="fnum1change" @fnum2change="fnum2change"></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>子组件props</h2>
+      <h3>cnum1: {{cnum1}}</h3>
+      <h3>cnum2: {{cnum2}}</h3>
+      <h2>子组件data</h2>
+      <h3>inum1: {{inum1}}</h3>
+      <h3>inum2: {{inum2}}</h3>
+      <input type="text" v-model="inum1" @input="num1change"><br />
+      <input type="text" v-model="inum2" @input="num2change">
+    </div>
+  </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      num1: 1,
+      num2: 0,
+    },
+    methods: {
+      fnum1change(value) {
+        this.num1 = parseFloat(value);
+      },
+      fnum2change(value) {
+        this.num2 = parseFloat(value);
+      }
+    },
+    components: {
+      cpn: {
+        template: '#cpn',
+        props: {
+          cnum1: {
+            type: Number,
+            default: 9,
+          },
+          cnum2: {
+            type: Number,
+            default: 9,
+          }
+        },
+        data() {
+          return {
+            inum1: this.cnum1,
+            inum2: this.cnum2,
+          };
+        },
+        methods: {
+          num1change(event) {
+            this.$emit('fnum1change', event.target.value);
+          },
+          num2change(event) {
+            this.$emit('fnum2change', event.target.value);
+          }
+        },
+
+      }
+    }
+  })
+</script>
+
+</html>
