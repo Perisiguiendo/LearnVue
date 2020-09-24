@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #app {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <cpn></cpn>
+    <cpn>
+      <h2 slot="center">子组件插槽中的内容center</h2>
+    </cpn>
+    <cpn>
+      <h2 slot="center">子组件插槽中的内容left</h2>
+      <h2 slot="left">子组件插槽中的内容center</h2>
+      <h2 slot="right">子组件插槽中的内容right</h2>
+    </cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>子组件</h2>
+      <h3>子组件</h3>
+      <slot name="left"><button>按钮</button></slot>
+      <slot name="center"></slot>
+      <slot name="right"></slot>
+      <hr>
+    </div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {},
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {};
+          },
+        }
+      }
+    })
+  </script>
+</body>
+
+
+</html>
